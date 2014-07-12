@@ -1,0 +1,17 @@
+{
+  "name": "sibf",
+  "version": "0.1.0",
+  "author": "Paul Nechifor <paul@nechifor.net> (http://nechifor.net/)",
+  "scripts": {
+    "build": "intercessor",
+    "start": "node build/app.js"
+  },
+  "dependencies": {
+    "intercessor": ">=0.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/paul-nechifor/sibf"
+  },
+  "license": "MIT"
+}
