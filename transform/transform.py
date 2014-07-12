@@ -5,6 +5,8 @@
 
 import xml.dom.minidom, os
 
+dirname = os.path.dirname(os.path.realpath(__file__))
+
 inceput = [
     '<!DOCTYPE html>',
     '<html lang="ro">',
@@ -21,7 +23,8 @@ inceput = "".join(inceput)
 
 date = {}
 
-def handleCarte(carte):
+def handleCarte(carte, out):
+
     info = carte.getElementsByTagName("info")[0]
 
     date["carte"] = carte
@@ -30,10 +33,11 @@ def handleCarte(carte):
     date["autor"] = info.getAttribute("autor")
     date["cod"] = info.getAttribute("cod")
 
-    os.system("rm -fr " + date["cod"])
-    os.mkdir(date["cod"])
+    dir = out + '/' + date['cod']
 
-    handlePrimaPagina()
+    os.system("rm -fr %s; mkdir -p %s" % (dir, dir))
+
+    handlePrimaPagina(dir)
     el = carte.getElementsByTagName("capitol")
     for i, capitol in enumerate(el):
         care = "altul"
@@ -41,12 +45,12 @@ def handleCarte(carte):
             care = "primul"
         if i == len(el) - 1:
             care = "ultimul"
-        handleCapitol(i, capitol, care)
+        handleCapitol(i, capitol, care, dir)
 
-    os.system("cp -r includes %s" % date["cod"])
+    os.system("cp -r %s/includes %s" % (dirname, dir))
 
-def handleCapitol(i, capitol, care):
-    p = open("%s/%d.html" % (date["cod"], i + 1), "w")
+def handleCapitol(i, capitol, care, dir):
+    p = open("%s/%d.html" % (dir, i + 1), "w")
     p.write((inceput % (date["titlu"] + ": " + capitol.getAttribute("titlu"))).encode('utf-8'))
     p.write('<div id="info">')
     p.write(('<h3><span class="titlu">%s</span> <span class="de">de</span> <span class="autor">%s</span></h3>' % (date['titlu'], date['autor'])).encode('utf-8'))
@@ -79,9 +83,9 @@ def handleCapitol(i, capitol, care):
     p.write(sfarsit)
     p.close()
 
-def handlePrimaPagina():
-    p = open("%s/index.html" % date["cod"], "w")
- 
+def handlePrimaPagina(dir):
+    p = open("%s/index.html" % (dir), "w")
+
     p.write((inceput % (date["titlu"] + " de " + date["autor"])).encode('utf-8'))
     p.write('<div id="chenartitlu">')
     p.write(('<h1>%s</h1>' % date["titlu"]).encode('utf-8'))
@@ -140,11 +144,11 @@ def handlePrimaPagina():
 
     p.close()
 
-dom = xml.dom.minidom.parse("../books/povesti.xml")
-handleCarte(dom)
+dom = xml.dom.minidom.parse(dirname + '/../books/povesti.xml')
+handleCarte(dom, dirname + '/../html')
 
-dom = xml.dom.minidom.parse("../books/moara.xml")
-handleCarte(dom)
+dom = xml.dom.minidom.parse(dirname + '/../books/moara.xml')
+handleCarte(dom, dirname + '/../html')
 
-dom = xml.dom.minidom.parse("../books/morometii.xml")
-handleCarte(dom)
+dom = xml.dom.minidom.parse(dirname + '/../books/morometii.xml')
+handleCarte(dom, dirname + '/../html')
