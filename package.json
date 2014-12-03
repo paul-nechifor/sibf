@@ -4,7 +4,10 @@
   "author": "Paul Nechifor <paul@nechifor.net> (http://nechifor.net/)",
   "scripts": {
     "build": "intercessor",
-    "start": "node build/app.js"
+    "clean": "rm -fr build html node_modules",
+    "intercessor-make": "mkdir html 2>/dev/null; ./transform/transform.py",
+    "start": "node build/app.js",
+    "up": "npm install && npm run intercessor-make && npm run build && npm run start"
   },
   "dependencies": {
     "intercessor": ">=0.3.0"
