@@ -1,0 +1,49 @@
+@font-face{font-family:'Old Standard TT';src:url('old_standard_tt.woff') format('woff');font-weight:normal;font-style:normal;}
+@font-face{font-family:'Crimson Text';src:url('crimson_text.woff') format('woff');font-weight:normal;font-style:normal;}
+@font-face{font-family:'Crimson Text';src:url('crimson_text_italic.woff') format('woff');font-weight:normal;font-style:italic;}
+@font-face{font-family:'Crimson Text';src:url('crimson_text_bold.woff') format('woff');font-weight:bold;font-style:normal;}
+@font-face{font-family:'Crimson Text';src:url('crimson_text_bold_italic.woff') format('woff');font-weight:bold;font-style:italic;}
+* {padding:0;margin:0}
+body{max-width:600px;padding:0 5px;margin:0 auto;font-family:"Crimson Text","Garamond",sans-serif;font-size:21px;line-height:1.5;text-align:justify;word-spacing:3px;cursor:default;color:#404040}
+h1{font-weight:normal;text-align:center;font-family:"Old Standard TT",sans-serif;font-size:60px;}
+h2{font-weight:normal;text-align:center;margin-bottom:20px;font-family:"Old Standard TT",sans-serif;font-size:40px;}
+h3{font-weight:normal;}
+h3#de{font-size:34px;font-style:italic;text-align:center}
+h2#autor{font-family:"Crimson Text",sans-serif;font-size:40px;font-style:italic;text-align:center;}
+div#chenartitlu{border:1px solid #BBB;border-width:1px 0;margin:30px 0 40px 0}
+p{text-indent:30px;}
+a{text-decoration:none;color:#404040;border-bottom:1px dotted #888}
+ol{padding-left:40px;margin-bottom:20px;}
+div#info{height:35px;margin-bottom:30px;border-bottom:1px solid #BBB;font-size:19px;font-style:italic}
+div#info span.de {display:none}
+div#info span.titlu{display:block;float:left;}
+div#info span.autor{display:block;float:right;}
+div#navigare {border-top:1px solid #BBB;margin-top:40px;display:table;width:100%;}
+div#navigare ul {list-style:none;padding-top:5px;display:table-row}
+div#navigare li {display:table-cell;width:100px;text-align:center;height:40px;}
+div#navigare li.inainte {font-style:italic}
+div#navigare li.inapoi {font-style:italic}
+div#navigare span.fara{color:#AAA}
+blockquote.versuri {margin:14px 0}
+blockquote.versuri p{text-indent:0;text-align:center;font-style:italic}
+div.prefata{margin-top:40px}
+div.prefata p{text-indent:0;width:80%;margin:0 auto}
+div.prefata p.titlupref{text-align:center;text-transform:uppercase;margin-bottom:15px;}
+div.prefata p.numepref{text-align:right}
+
+div.definitie{clear:both;font-size:14px;background-color:#DDD;width:500px;height:200px;padding:4px;box-shadow:0 0 5px rgba(0,0,0,0.5);}
+div.definitie p{text-indent:0;}
+div.rezultat{padding:10px;width:480px;height:163px;overflow-y:scroll;margin-top:7px; background:#FFF}
+div.rezultat p{text-indent:0;margin-bottom:8px;line-height:1.2}
+
+p.inchide{display:block;width:10px;height:10px;font-size:26px;margin-left:487px}
+p.inchide a{display:block;border-width:0;width:10px;text-align:center;line-height:10px;}
+
+@media only screen and (max-width: 479px) {
+    body{font-size:18px;line-height:1.4;word-spacing:0;}
+    h1{font-size:52px;}
+    h2{font-size:34px;}
+    h3#de{font-size:28px;}
+    h2#autor{font-size:34px;}
+    p{text-indent:25px;}
+}
