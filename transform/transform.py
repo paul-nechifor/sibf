@@ -3,7 +3,8 @@
 
 # This code is so bad, I should be shot.
 
-import xml.dom.minidom, os
+import os
+from xml.dom import minidom
 
 dirname = os.path.dirname(os.path.realpath(__file__))
 
@@ -22,6 +23,7 @@ sfarsit = "</body></html>"
 inceput = "".join(inceput)
 
 date = {}
+
 
 def handleCarte(carte, out):
 
@@ -48,6 +50,7 @@ def handleCarte(carte, out):
         handleCapitol(i, capitol, care, dir)
 
     os.system("cp -r %s/includes %s" % (dirname, dir))
+
 
 def handleCapitol(i, capitol, care, dir):
     p = open("%s/%d.html" % (dir, i + 1), "w")
@@ -82,6 +85,7 @@ def handleCapitol(i, capitol, care, dir):
 
     p.write(sfarsit)
     p.close()
+
 
 def handlePrimaPagina(dir):
     p = open("%s/index.html" % (dir), "w")
@@ -144,11 +148,12 @@ def handlePrimaPagina(dir):
 
     p.close()
 
-dom = xml.dom.minidom.parse(dirname + '/../books/povesti.xml')
-handleCarte(dom, dirname + '/../html')
 
-dom = xml.dom.minidom.parse(dirname + '/../books/moara.xml')
-handleCarte(dom, dirname + '/../html')
+dom = minidom.parse(dirname + '/../books/povesti.xml')
+handleCarte(dom, dirname + '/../dist')
 
-dom = xml.dom.minidom.parse(dirname + '/../books/morometii.xml')
-handleCarte(dom, dirname + '/../html')
+dom = minidom.parse(dirname + '/../books/moara.xml')
+handleCarte(dom, dirname + '/../dist')
+
+dom = minidom.parse(dirname + '/../books/morometii.xml')
+handleCarte(dom, dirname + '/../dist')

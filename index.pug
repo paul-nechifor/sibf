@@ -1,0 +1,26 @@
+doctype html
+html(lang='en')
+  head
+    title= title
+    meta(charset='utf-8')
+    style: :stylus(compress=true)
+      body
+        font-size 1.2em
+        line-height 1.4
+      .header
+        margin 0 auto
+        max-width 600px
+      a
+        text-decoration none
+        &:hover
+          text-decoration underline
+
+  body: .header: :markdown-it
+
+    # [Cărți SIBF](.)
+
+    * [Moara cu noroc](moara_cu_noroc) de Ioan Slavici
+    * [Povești](povesti) de Ion Creangă
+    * [Moromeții](morometii) de Marin Preda
+
+    Created by [Paul Nechifor](/).
