@@ -1,6 +1,6 @@
 {
   "name": "sibf",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Simple Intermediary Book Format",
   "devDependencies": {
     "eslint": "^4.0.0",
