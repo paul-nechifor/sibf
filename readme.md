@@ -7,9 +7,13 @@ typography for the web, ebook readers and others. I'll update it one day.
 
 ## Usage
 
+Install the packages:
+
+    yarn
+
 Start the server and watch for changes:
 
-    npm start
+    yarn start
 
 ## License
 

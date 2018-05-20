@@ -8,19 +8,21 @@ from xml.dom import minidom
 
 dirname = os.path.dirname(os.path.realpath(__file__))
 
-inceput = [
+inceput = "".join([
     '<!DOCTYPE html>',
     '<html lang="ro">',
     '<head>',
-    '<meta charset="utf-8"/>',
-    "<meta name='viewport' content='width=device-width, initial-scale=1, minimum-scale=0.25'/>",
-    '<title>%s</title>',
-    '<link rel="stylesheet" href="includes/style.css"/>',
+    '<meta charset="utf-8">',
+    '<meta http-equiv="x-ua-compatible" content="ie=edge">',
+    '<title>{titlu}</title>',
+    '<meta name="viewport" content="width=device-width,initial-scale=1">',
+    '<meta name="description" content="{titlu}">'
+    '<link rel="apple-touch-icon" href="/favicon152.png">'
+    '<link rel="stylesheet" href="includes/style.css">',
     '</head>',
-    '<body>'
-]
+    '<body>',
+])
 sfarsit = "</body></html>"
-inceput = "".join(inceput)
 
 date = {}
 
@@ -54,7 +56,8 @@ def handleCarte(carte, out):
 
 def handleCapitol(i, capitol, care, dir):
     p = open("%s/%d.html" % (dir, i + 1), "w")
-    p.write((inceput % (date["titlu"] + ": " + capitol.getAttribute("titlu"))).encode('utf-8'))
+    titlu = date["titlu"] + ": " + capitol.getAttribute("titlu")
+    p.write(inceput.format(titlu=titlu.encode('utf-8')))
     p.write('<div id="info">')
     p.write(('<h3><span class="titlu">%s</span> <span class="de">de</span> <span class="autor">%s</span></h3>' % (date['titlu'], date['autor'])).encode('utf-8'))
     p.write('</div>')
@@ -89,8 +92,8 @@ def handleCapitol(i, capitol, care, dir):
 
 def handlePrimaPagina(dir):
     p = open("%s/index.html" % (dir), "w")
-
-    p.write((inceput % (date["titlu"] + " de " + date["autor"])).encode('utf-8'))
+    titlu = date["titlu"] + " de " + date["autor"]
+    p.write(inceput.format(titlu=titlu.encode('utf-8')))
     p.write('<div id="chenartitlu">')
     p.write(('<h1>%s</h1>' % date["titlu"]).encode('utf-8'))
     p.write('<h3 id="de">de</h3>')
