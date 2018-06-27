@@ -1,3 +1,7 @@
+# This repository has been moved to [gitlab.com/paul-nechifor/sibf](http://gitlab.com/paul-nechifor/sibf).
+
+Old readme:
+
 # Simple Intermediary Book Format
 
 This is an old project in which I try to create an intermediary format with good
